@@ -22,9 +22,6 @@ const App = () => {
   const [state, setState] = useState(initial);
 
   const onDragEnd = (result) => {
-    console.log(result);
-    
-    
     if (!result.destination) {
       return;
     }
@@ -42,8 +39,6 @@ const App = () => {
    data.forEach((item, index) => {
       item.priority = index + 1
     })
-
-    console.log(data);
     
     setState(data)
   }

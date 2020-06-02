@@ -6,10 +6,12 @@ import MoonLoader from 'react-spinners/MoonLoader';
 
 import Container from '../Container';
 import Row from '../Row';
+import ModalWindow from '../ModalWindow';
 import styles from './Tabel.style';
 
 const Tabel = ({data, time}) => {
   const [loading, setLoading] = useState(true)
+  const [openModal, setOpenModal] = useState(false)
 
   setTimeout(() => {
     setLoading(false)
@@ -22,18 +24,26 @@ const Tabel = ({data, time}) => {
           ref={provided.innerRef}
           {...provided.droppableProps}
         >
-        <Container>
-          {
-            loading &&
-              <div css={styles.containerSpinner}>
-                <MoonLoader css={styles.spinner}/>
-              </div>
-          }
-          {data.map((item, index)  => (
-            <Row key={item.id} id={item.id} item={item} index={index} loading={loading} time={time}/>)
-          )}
-          {provided.placeholder}
-        </Container>
+          <Container>
+            {
+              openModal && <ModalWindow onClick={() => setOpenModal(!openModal)}/>
+            }
+
+            {
+              loading &&
+                <div css={styles.containerSpinner}>
+                  <MoonLoader />
+                </div>
+            }
+
+            {
+              data.map((item, index)  => (
+                <Row key={item.id} id={item.id} item={item} index={index} loading={loading} time={time} onDoubleClick={() => setOpenModal(!openModal)}/>)
+              )
+            }
+
+            {provided.placeholder}
+          </Container>
         </div>
       )} 
     </Droppable>

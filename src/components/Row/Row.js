@@ -6,7 +6,7 @@ import { Draggable } from 'react-beautiful-dnd'
 import Cell from '../Cell';
 import styles from './Row.style';
 
-const Row = ({id, index, item, loading, time}) => {
+const Row = ({id, index, item, loading, time, onDoubleClick}) => {
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -14,6 +14,7 @@ const Row = ({id, index, item, loading, time}) => {
         <div
           css={styles.container}
           ref={provided.innerRef}
+          onDoubleClick={onDoubleClick}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
