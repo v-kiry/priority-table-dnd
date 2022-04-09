@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",
